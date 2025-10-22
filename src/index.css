@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+:root {
+  --color-background: #000000;
+  --color-foreground: #ffffff;
+  --color-primary: #dc2626;
+  --color-secondary: #4b5563;
+  --color-muted: #6b7280;
+  --color-accent: #374151;
+  --color-destructive: #ef4444;
+  --color-border: #374151;
+  --color-input: #1f2937;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+/* 自定義滾動條隱藏 */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* 文字截斷 */
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}

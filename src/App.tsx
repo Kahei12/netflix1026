@@ -61,73 +61,73 @@ const sampleMemories: Memory[] = [
   // Shorts (7 videos)
   {
     id: "5",
-    title: "Short 1",
+    title: "呆",
     category: "Shorts",
-    description: "First short video memory - placeholder for your Google Drive video",
-    coverImage: "https://images.unsplash.com/photo-1489599808413-8b4a2b4b4b4b?w=800",
+    description: "呆 short video memory",
+    coverImage: "https://drive.google.com/thumbnail?id=1i-6y3EkuTyWaPkQ5P0MRBq0FbV5f4-Wp&sz=w800",
     mediaUrls: [],
     isVideo: true,
-    videoUrl: "" // Will be filled with Google Drive link
+    videoUrl: "https://drive.google.com/file/d/1i-6y3EkuTyWaPkQ5P0MRBq0FbV5f4-Wp/preview"
   },
   {
     id: "6",
-    title: "Short 2",
+    title: "我要食雪糕",
     category: "Shorts",
-    description: "Second short video memory - placeholder for your Google Drive video",
-    coverImage: "https://images.unsplash.com/photo-1489599808413-8b4a2b4b4b4b?w=800",
+    description: "我要食雪糕 short video memory",
+    coverImage: "https://drive.google.com/thumbnail?id=1hmwyutBJx1gzRD3a-qMdH4xTjjXAKklb&sz=w800",
     mediaUrls: [],
     isVideo: true,
-    videoUrl: "" // Will be filled with Google Drive link
+    videoUrl: "https://drive.google.com/file/d/1hmwyutBJx1gzRD3a-qMdH4xTjjXAKklb/preview"
   },
   {
     id: "7",
-    title: "Short 3",
+    title: "偷食",
     category: "Shorts",
-    description: "Third short video memory - placeholder for your Google Drive video",
-    coverImage: "https://images.unsplash.com/photo-1489599808413-8b4a2b4b4b4b?w=800",
+    description: "偷食 short video memory",
+    coverImage: "https://drive.google.com/thumbnail?id=1VPmsNAH3YA4hOITGVjuZjCWHHdC8ZJSi&sz=w800",
     mediaUrls: [],
     isVideo: true,
-    videoUrl: "" // Will be filled with Google Drive link
+    videoUrl: "https://drive.google.com/file/d/1VPmsNAH3YA4hOITGVjuZjCWHHdC8ZJSi/preview"
   },
   {
     id: "8",
-    title: "Short 4",
+    title: "嬲",
     category: "Shorts",
-    description: "Fourth short video memory - placeholder for your Google Drive video",
-    coverImage: "https://images.unsplash.com/photo-1489599808413-8b4a2b4b4b4b?w=800",
+    description: "嬲 short video memory",
+    coverImage: "https://drive.google.com/thumbnail?id=1hfEd_cf2HiE0vw2X0119uCEd_w4ih_Q1&sz=w800",
     mediaUrls: [],
     isVideo: true,
-    videoUrl: "" // Will be filled with Google Drive link
+    videoUrl: "https://drive.google.com/file/d/1hfEd_cf2HiE0vw2X0119uCEd_w4ih_Q1/preview"
   },
   {
     id: "9",
-    title: "Short 5",
+    title: "Kam",
     category: "Shorts",
-    description: "Fifth short video memory - placeholder for your Google Drive video",
-    coverImage: "https://images.unsplash.com/photo-1489599808413-8b4a2b4b4b4b?w=800",
+    description: "Kam short video memory",
+    coverImage: "https://drive.google.com/thumbnail?id=1emY3OqPjwrt-I-B7FxKnlMb-xFE7rFBe&sz=w800",
     mediaUrls: [],
     isVideo: true,
-    videoUrl: "" // Will be filled with Google Drive link
+    videoUrl: "https://drive.google.com/file/d/1emY3OqPjwrt-I-B7FxKnlMb-xFE7rFBe/preview"
   },
   {
     id: "10",
-    title: "Short 6",
+    title: "Mua",
     category: "Shorts",
-    description: "Sixth short video memory - placeholder for your Google Drive video",
-    coverImage: "https://images.unsplash.com/photo-1489599808413-8b4a2b4b4b4b?w=800",
+    description: "Mua short video memory",
+    coverImage: "https://drive.google.com/thumbnail?id=1Kx73f2qAWaa5nq6vKT4XHbHuHKVaXf3d&sz=w800",
     mediaUrls: [],
     isVideo: true,
-    videoUrl: "" // Will be filled with Google Drive link
+    videoUrl: "https://drive.google.com/file/d/1Kx73f2qAWaa5nq6vKT4XHbHuHKVaXf3d/preview"
   },
   {
     id: "11",
-    title: "Short 7",
+    title: "Mua2",
     category: "Shorts",
-    description: "Seventh short video memory - placeholder for your Google Drive video",
-    coverImage: "https://images.unsplash.com/photo-1489599808413-8b4a2b4b4b4b?w=800",
+    description: "Mua2 short video memory",
+    coverImage: "https://drive.google.com/thumbnail?id=19J9hARA2Is0t_GgqCJmudl3t3IqhHdcW&sz=w800",
     mediaUrls: [],
     isVideo: true,
-    videoUrl: "" // Will be filled with Google Drive link
+    videoUrl: "https://drive.google.com/file/d/19J9hARA2Is0t_GgqCJmudl3t3IqhHdcW/preview"
   }
 ]
 
@@ -275,11 +275,11 @@ export default function App() {
                   {selectedMemory.isVideo && selectedMemory.videoUrl ? (
                     <iframe
                       src={selectedMemory.videoUrl}
-                      className="w-full h-full"
+                      className="w-full h-full border-0"
                       frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                       title={selectedMemory.title}
+                      loading="lazy"
                     />
                   ) : (
                     <img
@@ -288,7 +288,7 @@ export default function App() {
                       className="w-full h-full object-cover"
                     />
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent pointer-events-none" />
                 </div>
 
                 <div className="p-8">

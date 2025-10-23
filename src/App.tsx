@@ -447,8 +447,7 @@ export default function App() {
 
       <footer className="bg-black border-t border-gray-800 py-12 px-8 md:px-16">
         <div className="max-w-6xl mx-auto text-center">
-          <p className="text-gray-400">Made with ❤️ for the most amazing person in the world</p>
-          <p className="text-gray-500 mt-2">Happy Birthday, my love!</p>
+          <p className="text-gray-400">希望你喜歡♡</p>
         </div>
       </footer>
     </div>

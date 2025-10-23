@@ -139,7 +139,7 @@ export default function App() {
   const [isAddFormOpen, setIsAddFormOpen] = useState(false)
   const [isMusicPlaying, setIsMusicPlaying] = useState(false)
   const [isMusicSettingsOpen, setIsMusicSettingsOpen] = useState(false)
-  const [musicUrl, setMusicUrl] = useState("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
+  const [musicUrl, setMusicUrl] = useState("https://github.com/Kahei12/netflix1026/raw/refs/heads/main/Can't%20Breakup%20Girl,%20Can't%20Breakaway%20Boy%20(feat.%20Jung%20In).mp3")
   const audioRef = useRef<HTMLAudioElement | null>(null)
 
   // Load saved data
@@ -181,17 +181,37 @@ export default function App() {
 
   const toggleMusic = () => {
     if (!audioRef.current) {
+      // 使用設定的音樂 URL
       audioRef.current = new Audio(musicUrl)
       audioRef.current.loop = true
       audioRef.current.volume = 0.3
+      audioRef.current.preload = 'auto'
+      
+      audioRef.current.addEventListener('error', (e) => {
+        console.error('音樂載入失敗:', e)
+        alert('音樂播放失敗！請檢查音樂連結是否正確。')
+      })
+      
+      audioRef.current.addEventListener('canplay', () => {
+        console.log('音樂可以播放')
+      })
+      
+      audioRef.current.addEventListener('loadstart', () => {
+        console.log('開始載入音樂')
+      })
     }
 
     if (isMusicPlaying) {
-      audioRef.current.pause()
+      audioRef.current?.pause()
       setIsMusicPlaying(false)
     } else {
-      audioRef.current.play().catch(console.error)
-      setIsMusicPlaying(true)
+      if (audioRef.current) {
+        audioRef.current.play().catch((error) => {
+          console.error('播放失敗:', error)
+          alert('音樂播放失敗！請嘗試以下解決方案：\n\n1. 檢查瀏覽器是否允許音頻播放\n2. 嘗試點擊頁面後再播放音樂\n3. 使用其他音頻託管服務')
+        })
+        setIsMusicPlaying(true)
+      }
     }
   }
 
@@ -209,6 +229,7 @@ export default function App() {
     }
     setIsMusicSettingsOpen(false)
   }
+
 
   // Navigation functions
   const navigateToHome = () => {
@@ -388,7 +409,7 @@ export default function App() {
           
           <div className="space-y-4 mt-4">
             <div>
-              <Label htmlFor="musicUrl">Background Music URL</Label>
+              <Label htmlFor="musicUrl">Music URL</Label>
               <Input
                 id="musicUrl"
                 value={musicUrl}
@@ -396,6 +417,13 @@ export default function App() {
                 placeholder="https://example.com/music.mp3"
                 className="mt-2"
               />
+              <div className="mt-2 text-sm text-gray-400">
+                <p>Recommended audio hosting services:</p>
+                <p className="text-xs mt-1">• SoundCloud: Upload and get direct link</p>
+                <p className="text-xs">• GitHub: https://raw.githubusercontent.com/username/repo/main/audio/file.mp3</p>
+                <p className="text-xs">• Dropbox: Right-click file → "Copy Dropbox link" → Change ?dl=0 to ?dl=1</p>
+                <p className="text-xs">• OneDrive: Right-click file → "Embed" → Copy direct link</p>
+              </div>
             </div>
             
             <div className="flex gap-4 pt-4">

@@ -5,6 +5,9 @@ export interface Memory {
   category: string
   coverImage: string
   mediaUrls: string[]
+  videoUrl?: string
+  isVideo?: boolean
+  coverImagePosition?: string
 }
 
 export interface MemoryCardProps {

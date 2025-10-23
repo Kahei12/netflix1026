@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Memory } from '../../types'
 import { MemoryCard } from './MemoryCard'
@@ -14,6 +14,23 @@ export const MemoryRow = ({ title, memories, onMemoryClick }: MemoryRowProps) =>
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [showLeftArrow, setShowLeftArrow] = useState(false)
   const [showRightArrow, setShowRightArrow] = useState(true)
+
+  const updateArrows = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current
+      setShowLeftArrow(scrollLeft > 0)
+      setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 1)
+    }
+  }
+
+  useEffect(() => {
+    const container = scrollContainerRef.current
+    if (container) {
+      updateArrows()
+      container.addEventListener('scroll', updateArrows)
+      return () => container.removeEventListener('scroll', updateArrows)
+    }
+  }, [memories])
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {

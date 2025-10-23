@@ -22,14 +22,12 @@ export const Dialog = ({ isOpen, onClose, children, className }: DialogProps) =>
           className
         )}
       >
-        <Button
-          variant="ghost"
-          size="sm"
+        <button
           onClick={onClose}
-          className="absolute right-2 top-2 z-10"
+          className="absolute right-4 top-4 z-10 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-colors"
         >
-          <X className="h-4 w-4" />
-        </Button>
+          <X className="h-6 w-6" />
+        </button>
         {children}
       </div>
     </div>,

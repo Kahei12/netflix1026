@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -16,45 +16,118 @@ import { Memory } from './types'
 
 // Sample data
 const sampleMemories: Memory[] = [
+  // Movies (4 videos)
   {
     id: "1",
-    title: "Sunset by the Beach",
-    category: "First Dates",
-    description: "The day we watched the sunset together and knew this was something special. The sky was painted in shades of pink and orange, just like our growing feelings.",
-    coverImage: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800",
-    mediaUrls: []
+    title: "Airside asmr",
+    category: "Movies",
+    description: "Airside asmr video memory",
+    coverImage: "https://drive.google.com/thumbnail?id=1zZiouggK4umTDTyBs-RyVin_suegGle-&sz=w800",
+    mediaUrls: [],
+    isVideo: true,
+    videoUrl: "https://drive.google.com/file/d/1hhv6N5Zh_n1-tZY0bnf0uQbCeAPXEwaU/preview"
   },
   {
     id: "2",
-    title: "Romantic Dinner Date",
-    category: "First Dates", 
-    description: "Our first candlelit dinner. The food was amazing, but nothing compared to the conversation and laughter we shared.",
-    coverImage: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800",
-    mediaUrls: []
+    title: "珀麗灣",
+    category: "Movies",
+    description: "珀麗灣 video memory",
+    coverImage: "https://drive.google.com/thumbnail?id=12EMabrcZg0NZOKEassXhJmgxILD8EPhP&sz=w800",
+    mediaUrls: [],
+    isVideo: true,
+    videoUrl: "https://drive.google.com/file/d/1eZWHBibvJAHue-iePJtaoIIOR_XDT8QU/preview"
   },
   {
     id: "3",
-    title: "Mountain Adventure",
-    category: "Travel Memories",
-    description: "Conquering peaks together and discovering that the journey is always better with you by my side.",
-    coverImage: "https://images.unsplash.com/photo-1464822759844-d62ea929ef21?w=800",
-    mediaUrls: []
+    title: "深圳",
+    category: "Movies",
+    description: "深圳 video memory",
+    coverImage: "https://drive.google.com/thumbnail?id=1_L1wK-wr-PfMSoZdmuNWN7S1yxIRUzkL&sz=w800",
+    mediaUrls: [],
+    isVideo: true,
+    videoUrl: "https://drive.google.com/file/d/10n7crjwTKbReM0WqSu_jGkN2RCZOuevY/preview",
+    coverImagePosition: "object-top"
   },
   {
     id: "4",
-    title: "Coffee Shop Mornings",
-    category: "First Dates",
-    description: "Lazy Sunday mornings at our favorite coffee shop, talking about everything and nothing.",
-    coverImage: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800",
-    mediaUrls: []
+    title: "感謝",
+    category: "Movies",
+    description: "感謝 video memory",
+    coverImage: "https://drive.google.com/thumbnail?id=1w0h_rh3fujL4rg2KFIsq68DCPO9M3KCX&sz=w800",
+    mediaUrls: [],
+    isVideo: true,
+    videoUrl: "https://drive.google.com/file/d/1WstUzIQqRtBeQknnotlj4c8MRBU3ygN0/preview"
   },
+  // Shorts (7 videos)
   {
     id: "5",
-    title: "City Lights",
-    category: "Travel Memories",
-    description: "Exploring the city at night, hand in hand, feeling like we owned the world.",
-    coverImage: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=800",
-    mediaUrls: []
+    title: "Short 1",
+    category: "Shorts",
+    description: "First short video memory - placeholder for your Google Drive video",
+    coverImage: "https://images.unsplash.com/photo-1489599808413-8b4a2b4b4b4b?w=800",
+    mediaUrls: [],
+    isVideo: true,
+    videoUrl: "" // Will be filled with Google Drive link
+  },
+  {
+    id: "6",
+    title: "Short 2",
+    category: "Shorts",
+    description: "Second short video memory - placeholder for your Google Drive video",
+    coverImage: "https://images.unsplash.com/photo-1489599808413-8b4a2b4b4b4b?w=800",
+    mediaUrls: [],
+    isVideo: true,
+    videoUrl: "" // Will be filled with Google Drive link
+  },
+  {
+    id: "7",
+    title: "Short 3",
+    category: "Shorts",
+    description: "Third short video memory - placeholder for your Google Drive video",
+    coverImage: "https://images.unsplash.com/photo-1489599808413-8b4a2b4b4b4b?w=800",
+    mediaUrls: [],
+    isVideo: true,
+    videoUrl: "" // Will be filled with Google Drive link
+  },
+  {
+    id: "8",
+    title: "Short 4",
+    category: "Shorts",
+    description: "Fourth short video memory - placeholder for your Google Drive video",
+    coverImage: "https://images.unsplash.com/photo-1489599808413-8b4a2b4b4b4b?w=800",
+    mediaUrls: [],
+    isVideo: true,
+    videoUrl: "" // Will be filled with Google Drive link
+  },
+  {
+    id: "9",
+    title: "Short 5",
+    category: "Shorts",
+    description: "Fifth short video memory - placeholder for your Google Drive video",
+    coverImage: "https://images.unsplash.com/photo-1489599808413-8b4a2b4b4b4b?w=800",
+    mediaUrls: [],
+    isVideo: true,
+    videoUrl: "" // Will be filled with Google Drive link
+  },
+  {
+    id: "10",
+    title: "Short 6",
+    category: "Shorts",
+    description: "Sixth short video memory - placeholder for your Google Drive video",
+    coverImage: "https://images.unsplash.com/photo-1489599808413-8b4a2b4b4b4b?w=800",
+    mediaUrls: [],
+    isVideo: true,
+    videoUrl: "" // Will be filled with Google Drive link
+  },
+  {
+    id: "11",
+    title: "Short 7",
+    category: "Shorts",
+    description: "Seventh short video memory - placeholder for your Google Drive video",
+    coverImage: "https://images.unsplash.com/photo-1489599808413-8b4a2b4b4b4b?w=800",
+    mediaUrls: [],
+    isVideo: true,
+    videoUrl: "" // Will be filled with Google Drive link
   }
 ]
 
@@ -137,11 +210,29 @@ export default function App() {
     setIsMusicSettingsOpen(false)
   }
 
+  // Navigation functions
+  const navigateToHome = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const navigateToMovies = () => {
+    const moviesSection = document.querySelector('[data-category="Movies"]')
+    if (moviesSection) {
+      moviesSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  const navigateToShorts = () => {
+    const shortsSection = document.querySelector('[data-category="Shorts"]')
+    if (shortsSection) {
+      shortsSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   // Group memories by category
   const groupedMemories = {
-    "First Dates": memories.filter((m) => m.category === "First Dates"),
-    "Travel Memories": memories.filter((m) => m.category === "Travel Memories"),
-    "Special Moments": memories.filter((m) => m.category === "Special Moments"),
+    "Movies": memories.filter((m) => m.category === "Movies"),
+    "Shorts": memories.filter((m) => m.category === "Shorts"),
   }
 
   return (
@@ -151,21 +242,25 @@ export default function App() {
         isMusicPlaying={isMusicPlaying}
         onToggleMusic={toggleMusic}
         onMusicSettings={() => setIsMusicSettingsOpen(true)}
+        onNavigateToHome={navigateToHome}
+        onNavigateToMovies={navigateToMovies}
+        onNavigateToShorts={navigateToShorts}
       />
 
       <HeroBanner
-        memories={memories}
+        memories={memories.filter((m) => m.category === "Movies")}
         onViewDetails={handleMemoryClick}
       />
 
       <div className="relative mt-8 pb-16">
         {Object.entries(groupedMemories).map(([category, categoryMemories]) => (
-          <MemoryRow
-            key={category}
-            title={category}
-            memories={categoryMemories}
-            onMemoryClick={handleMemoryClick}
-          />
+          <div key={category} data-category={category}>
+            <MemoryRow
+              title={category}
+              memories={categoryMemories}
+              onMemoryClick={handleMemoryClick}
+            />
+          </div>
         ))}
       </div>
 
@@ -173,23 +268,26 @@ export default function App() {
       <Dialog isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-gray-900 text-white p-0">
           <div className="relative">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsModalOpen(false)}
-              className="absolute top-4 right-4 z-10 bg-black/50 hover:bg-black/70 text-white rounded-full"
-            >
-              <X className="h-6 w-6" />
-            </Button>
 
             {selectedMemory && (
               <>
                 <div className="relative w-full h-96">
-                  <img
-                    src={selectedMemory.coverImage}
-                    alt={selectedMemory.title}
-                    className="w-full h-full object-cover"
-                  />
+                  {selectedMemory.isVideo && selectedMemory.videoUrl ? (
+                    <iframe
+                      src={selectedMemory.videoUrl}
+                      className="w-full h-full"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      title={selectedMemory.title}
+                    />
+                  ) : (
+                    <img
+                      src={selectedMemory.coverImage}
+                      alt={selectedMemory.title}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent" />
                 </div>
 
